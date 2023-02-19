@@ -1,0 +1,5 @@
+activate your environment
+source 'environment_name'/bin/activate
+set an environment variable 
+FLASK_APP=microblog.py 
+to run app use: flask run
