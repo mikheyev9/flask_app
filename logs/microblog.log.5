@@ -1,136 +1,87 @@
-2023-04-19 22:04:47,732 ERROR: Exception on /favicon.ico [GET] [in /home/anton/env/env/lib/python3.10/site-packages/flask/app.py:1741]
+2023-05-16 21:48:35,888 ERROR: Exception on /register [POST] [in /home/anton/code_train/Flask/flask/lib/python3.11/site-packages/flask/app.py:1414]
 Traceback (most recent call last):
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
     self.dialect.do_execute(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 920, in do_execute
     cursor.execute(statement, parameters)
 sqlite3.OperationalError: no such table: user
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 2525, in wsgi_app
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 1822, in full_dispatch_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 1818, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 2309, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "/home/anton/env/env/blog_1/app/routes.py", line 71, in before_request
-    if current_user.is_authenticated:
-  File "/home/anton/env/env/lib/python3.10/site-packages/werkzeug/local.py", line 316, in __get__
-    obj = instance._get_current_object()  # type: ignore[misc]
-  File "/home/anton/env/env/lib/python3.10/site-packages/werkzeug/local.py", line 520, in _get_current_object
-    return get_name(local())  # type: ignore
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask_login/utils.py", line 372, in _get_user
-    current_app.login_manager._load_user()
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-  File "/home/anton/env/env/blog_1/app/models.py", line 16, in load_user
-    return User.query.get(int(id))
-  File "<string>", line 2, in get
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 402, in warned
-    return fn(*args, **kwargs)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 947, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 951, in _get_impl
-    return self.session._get_impl(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2970, in _get_impl
-    return db_load_fn(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 530, in load_on_pk_identity
-    session.execute(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1714, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 333, in _execute_on_connection
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/blog_1/app/routes.py", line 61, in register
+    if form.validate_on_submit():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/flask_wtf/form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/wtforms/fields/core.py", line 242, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/wtforms/fields/core.py", line 262, in _run_validation_chain
+    validator(form, self)
+  File "/home/anton/code_train/Flask/blog_1/app/forms.py", line 27, in validate_username
+    user = User.query.filter_by(username=username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2747, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2846, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2232, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2127, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 292, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1413, in execute
+    return meth(
+           ^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 483, in _execute_on_connection
     return connection._execute_clauseelement(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
     ret = self._execute_context(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1841, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
     self._handle_dbapi_exception(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
-    util.raise_(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
-    raise exception
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
     self.dialect.do_execute(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+  File "/home/anton/code_train/Flask/flask/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 920, in do_execute
     cursor.execute(statement, parameters)
 sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
 [SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
 FROM user 
-WHERE user.id = ?]
-[parameters: (3,)]
-(Background on this error at: https://sqlalche.me/e/14/e3q8)
-2023-04-19 22:04:49,570 ERROR: Exception on / [GET] [in /home/anton/env/env/lib/python3.10/site-packages/flask/app.py:1741]
-Traceback (most recent call last):
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
-    self.dialect.do_execute(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 1818, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask/app.py", line 2309, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "/home/anton/env/env/blog_1/app/routes.py", line 71, in before_request
-    if current_user.is_authenticated:
-  File "/home/anton/env/env/lib/python3.10/site-packages/werkzeug/local.py", line 316, in __get__
-    obj = instance._get_current_object()  # type: ignore[misc]
-  File "/home/anton/env/env/lib/python3.10/site-packages/werkzeug/local.py", line 520, in _get_current_object
-    return get_name(local())  # type: ignore
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask_login/utils.py", line 372, in _get_user
-    current_app.login_manager._load_user()
-  File "/home/anton/env/env/lib/python3.10/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-  File "/home/anton/env/env/blog_1/app/models.py", line 16, in load_user
-    return User.query.get(int(id))
-  File "<string>", line 2, in get
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 402, in warned
-    return fn(*args, **kwargs)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 947, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 951, in _get_impl
-    return self.session._get_impl(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2970, in _get_impl
-    return db_load_fn(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 530, in load_on_pk_identity
-    session.execute(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1714, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 333, in _execute_on_connection
-    return connection._execute_clauseelement(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
-    ret = self._execute_context(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
-    self._handle_dbapi_exception(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
-    util.raise_(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
-    raise exception
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
-    self.dialect.do_execute(
-  File "/home/anton/env/env/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
-[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
-FROM user 
-WHERE user.id = ?]
-[parameters: (3,)]
-(Background on this error at: https://sqlalche.me/e/14/e3q8)
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('admin', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2023-05-16 21:50:32,326 INFO: Microblog startup [in /home/anton/code_train/Flask/blog_1/app/__init__.py:57]
+2023-05-16 21:50:53,295 INFO: Microblog startup [in /home/anton/code_train/Flask/blog_1/app/__init__.py:57]

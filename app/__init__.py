@@ -13,11 +13,12 @@ from flask_login import LoginManager
 import logging
 from logging.handlers import SMTPHandler , RotatingFileHandler
 import os
-
+from flask_mail import Mail
 
 #create an application object
 app = Flask(__name__)
 app.config.from_object(Config) # use configuration from class Config
+mail = Mail(app) # restore password
 db = SQLAlchemy(app) # database object
 migrate = Migrate(app,db) # migration object
 login = LoginManager(app) # login
